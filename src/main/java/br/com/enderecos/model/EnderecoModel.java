@@ -18,11 +18,14 @@ public class EnderecoModel {
     private String estado;
     private String cep;
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private UsuarioModel usuario;
 
     public EnderecoModel() {
     }
 
-    public EnderecoModel(Long id, String logradouro, Long numero, String complemento, String bairro, String cidade, String estado, String cep) {
+    public EnderecoModel(Long id, String logradouro, Long numero, String complemento, String bairro, String cidade, String estado, String cep, UsuarioModel usuario) {
         this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -31,6 +34,7 @@ public class EnderecoModel {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+        this.usuario = usuario;
     }
 
     public Long getId() {
@@ -95,5 +99,13 @@ public class EnderecoModel {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public UsuarioModel getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioModel usuario) {
+        this.usuario = usuario;
     }
 }
