@@ -1,9 +1,15 @@
 package br.com.enderecos.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class EnderecoRequest {
 
 
@@ -39,82 +45,4 @@ public class EnderecoRequest {
     @ApiModelProperty(value = "", required = true, example = "35107781896")
     private String cpfCliente;
 
-
-    public EnderecoRequest() {
-    }
-
-    public EnderecoRequest(@NotEmpty(message = "Logradouro não pode ser vazio") String logradouro, @NotEmpty(message = "Número não pode ser vazio") String numero, String complemento, @NotEmpty(message = "Bairro não pode ser vazio") String bairro, @NotEmpty(message = "Cidade não pode ser vazio") String cidade, @NotEmpty(message = "Estado não pode ser vazio") String estado, @NotEmpty(message = "01209010") String cep, @NotEmpty(message = "Cpf não pode ser vazio") String cpfCliente) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
-        this.cpfCliente = cpfCliente;
-    }
-
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getCpfCliente() {
-        return cpfCliente;
-    }
-
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
-    }
 }

@@ -1,20 +1,29 @@
 package br.com.enderecos.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
 
+@Slf4j
 @ControllerAdvice
 public class ResponseEntityExceptionHandler {
 
+    @ExceptionHandler(UsuarioNaoEncontradoException.class)
+    public ResponseEntity<ErroResponse> usuarioNaoEncontrado() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body( new ErroResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "Usuário Não Encontrado"
+        ));
+    }
+
     @ExceptionHandler(InvalidParamException.class)
-    public ResponseEntity<ErroResponse> invalidFile(InvalidParamException e, HttpServletRequest request) {
+    public ResponseEntity<ErroResponse> parametrosInvalidos(InvalidParamException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body( new ErroResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 e.getMessage()
@@ -22,7 +31,7 @@ public class ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErroResponse> invalidArgument(MethodArgumentNotValidException e, HttpServletRequest request) {
+    public ResponseEntity<ErroResponse> argumentosInvalidos(MethodArgumentNotValidException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErroResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 tratamentoDeMensagem(e)
@@ -30,12 +39,16 @@ public class ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity<ErroResponse> invalidArgument(SQLIntegrityConstraintViolationException e, HttpServletRequest request) {
-
+    public ResponseEntity<ErroResponse> chaveDuplicadaNoBanco(SQLIntegrityConstraintViolationException e) {
+        log.error(e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErroResponse(
                 HttpStatus.BAD_REQUEST.value(),
-                e.getMessage()
+                "Chave duplicada: " + tratarMsgSql(e.getMessage())
         ));
+    }
+
+    private String tratarMsgSql(String message) {
+        return message.substring(17, 28);
     }
 
     private String tratamentoDeMensagem(MethodArgumentNotValidException e) {
@@ -46,6 +59,3 @@ public class ResponseEntityExceptionHandler {
         return nMsg;
     }
 }
-
-
-
