@@ -11,21 +11,21 @@ public class EnderecoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String logradouro;
-    private Long numero;
+    private String numero;
     private String complemento;
     private String bairro;
     private String cidade;
     private String estado;
     private String cep;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinColumn(name = "usuario_id")
     private UsuarioModel usuario;
 
     public EnderecoModel() {
     }
 
-    public EnderecoModel(Long id, String logradouro, Long numero, String complemento, String bairro, String cidade, String estado, String cep, UsuarioModel usuario) {
+    public EnderecoModel(Long id, String logradouro, String numero, String complemento, String bairro, String cidade, String estado, String cep, UsuarioModel usuario) {
         this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -53,11 +53,11 @@ public class EnderecoModel {
         this.logradouro = logradouro;
     }
 
-    public Long getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
