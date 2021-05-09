@@ -46,7 +46,7 @@ public class UsuarioService {
         log.info("[USUARIO SERVICE - buscaUsuario: {}]", cpf);
         UsuarioModel usuario = usuarioRepository.findByCpf(cpf);
 
-        if(usuario==null){
+        if (usuario == null) {
             throw new UsuarioNaoEncontradoException();
         }
 

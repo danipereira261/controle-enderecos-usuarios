@@ -1,6 +1,7 @@
 package br.com.enderecos.controller;
 
 
+import br.com.enderecos.dto.DefautResponse;
 import br.com.enderecos.dto.EnderecoRequest;
 import br.com.enderecos.service.EnderecoService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +24,9 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @PostMapping(value = "/cadastrar")
-    public ResponseEntity<String> cadastrar(@Valid @RequestBody EnderecoRequest enderecoRequest){
+    public ResponseEntity<DefautResponse> cadastrar(@Valid @RequestBody EnderecoRequest enderecoRequest) {
 
         enderecoService.process(enderecoRequest);
-        return new ResponseEntity<>("Dados registrados com sucesso", HttpStatus.CREATED);
+        return new ResponseEntity<>(DefautResponse.builder().message("Dados registrados com sucesso").build(), HttpStatus.CREATED);
     }
 }

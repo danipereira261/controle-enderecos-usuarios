@@ -1,6 +1,6 @@
-# Gryffindor Squad
+# REST API
 ###Description:
-Service to Wish List
+Service to List of user addresses
 
 ####Dependencies
     - Swagger
@@ -11,5 +11,4 @@ Service to Wish List
 #### Swagger Link
 http://localhost:8080/swagger-ui.html
 
-#### Kanban
-https://trello.com/b/8lAv6tVq/luiza-labs-scrum
+

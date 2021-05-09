@@ -26,12 +26,12 @@ public class Endereco {
     public static List<Endereco> converterList(List<EnderecoModel> listaDeEnderecos) {
 
         //verifica se a lista nao é vazia
-        if(!listaDeEnderecos.isEmpty()){
+        if (!listaDeEnderecos.isEmpty()) {
             //caso nao seja,
             //cria a lista q deve ser retornada
             List<Endereco> enderecos = new ArrayList<>();
             //itera na lista do model
-            for (EnderecoModel lista:listaDeEnderecos) {
+            for (EnderecoModel lista : listaDeEnderecos) {
                 //adiciona na lista o model convertido no DTO
                 enderecos.add(convertDTO(lista));
             }
@@ -50,6 +50,7 @@ public class Endereco {
                 .complemento(model.getComplemento())
                 .logradouro(model.getLogradouro())
                 .numero(model.getNumero())
+                .estado(model.getEstado())
                 .build();
     }
 }

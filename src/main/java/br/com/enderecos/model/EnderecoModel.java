@@ -1,6 +1,5 @@
 package br.com.enderecos.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,5 +29,4 @@ public class EnderecoModel {
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "usuario_id")
     private UsuarioModel usuario;
-
 }

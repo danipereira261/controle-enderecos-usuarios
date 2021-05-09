@@ -41,11 +41,11 @@ public class SwaggerConfig {
 
         ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
 
-        apiInfoBuilder.title("Gryffondor Squad");
+        apiInfoBuilder.title("SERVICE TO LIST OF USER ADDRESSES");
         apiInfoBuilder.description("Rest API to provide Detartament registration");
         apiInfoBuilder.version("0.0.1");
-        apiInfoBuilder.license("Simple Bank Tec");
-        apiInfoBuilder.licenseUrl("http://www.simplebank.com");
+        apiInfoBuilder.license("");
+        apiInfoBuilder.licenseUrl("");
         apiInfoBuilder.contact(this.contact());
 
         return apiInfoBuilder;
@@ -54,8 +54,8 @@ public class SwaggerConfig {
     private Contact contact() {
 
         return new Contact(
-                "Simple Bank",
-                "http://www.simplebank.com",
-                "tec@simplebank.com");
+                "List of user addresses",
+                "",
+                "");
     }
 }

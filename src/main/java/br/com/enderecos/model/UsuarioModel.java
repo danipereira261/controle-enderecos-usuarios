@@ -1,13 +1,11 @@
 package br.com.enderecos.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -30,7 +28,6 @@ public class UsuarioModel {
 
     @Column(name = "cpf", unique = true)
     private String cpf;
-
 
     @Column(name = "data_nascimento")
     private String dataNascimento;

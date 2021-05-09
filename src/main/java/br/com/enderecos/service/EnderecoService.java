@@ -21,16 +21,16 @@ public class EnderecoService {
     public void process(EnderecoRequest enderecoRequest) {
 
         UsuarioModel usuarioModel = usuarioRepository.findByCpf(enderecoRequest.getCpfCliente());
-        EnderecoModel endereco = new EnderecoModel();
-        endereco.setLogradouro(enderecoRequest.getLogradouro());
-        endereco.setNumero(enderecoRequest.getNumero());
-        endereco.setComplemento(enderecoRequest.getComplemento());
-        endereco.setBairro(enderecoRequest.getBairro());
-        endereco.setCidade(enderecoRequest.getCidade());
-        endereco.setEstado(enderecoRequest.getEstado());
-        endereco.setCep(enderecoRequest.getCep());
-        endereco.setUsuario(usuarioModel);
 
-        enderecoRepository.save(endereco);
+        enderecoRepository.save(EnderecoModel.builder()
+                .logradouro(enderecoRequest.getLogradouro())
+                .numero(enderecoRequest.getNumero())
+                .complemento(enderecoRequest.getComplemento())
+                .bairro(enderecoRequest.getBairro())
+                .cidade(enderecoRequest.getCidade())
+                .estado(enderecoRequest.getEstado())
+                .cep(enderecoRequest.getCep())
+                .usuario(usuarioModel)
+                .build());
     }
 }
