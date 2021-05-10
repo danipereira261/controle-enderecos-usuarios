@@ -20,22 +20,22 @@ public class UsuarioRequest {
     @NotNull(message = "Cpf obrigatório")
     @NotEmpty(message = "Cpf não pode ser vazio")
     @CPF(message = "CPF precisa ser válido")
-    @ApiModelProperty(value = "", required = true, example = "35107781896")
+    @ApiModelProperty(value = "", required = true, example = "63561410006")
     private String cpf;
 
     @NotNull(message = "Nome obrigatório")
     @NotEmpty(message = "Nome não pode ser vazio")
-    @ApiModelProperty(value = "", required = true, example = "Daniele Santana Pereira")
+    @ApiModelProperty(value = "", required = true, example = "Jose da Silva")
     private String nome;
 
     @NotNull(message = "Data Nascimento obrigatório")
     @NotEmpty(message = "Data Nascimento não pode ser vazio")
-    @ApiModelProperty(value = "", required = true, example = "26/01/1988")
+    @ApiModelProperty(value = "", required = true, example = "29/09/1994")
     private String dataNascimento;
 
     @NotNull(message = "Email obrigatório")
     @NotEmpty(message = "Email não pode ser vazio")
     @Email(message = "Email precisa ser válido")
-    @ApiModelProperty(value = "", required = true, example = "dpereira261@gmail.com")
+    @ApiModelProperty(value = "", required = true, example = "jose@gmail.com")
     private String email;
 }

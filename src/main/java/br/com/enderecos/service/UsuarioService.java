@@ -43,24 +43,24 @@ public class UsuarioService {
     }
 
     public UsuarioResponse buscaUsuario(String cpf) throws UsuarioNaoEncontradoException {
-        log.info("[USUARIO SERVICE - buscaUsuario: {}]", cpf);
-        UsuarioModel usuario = usuarioRepository.findByCpf(cpf);
+            log.info("[USUARIO SERVICE - buscaUsuario: {}]", cpf);
+            UsuarioModel usuario = usuarioRepository.findByCpf(cpf);
 
-        if (usuario == null) {
-            throw new UsuarioNaoEncontradoException();
-        }
+            if (usuario == null) {
+                throw new UsuarioNaoEncontradoException();
+            }
 
-        log.info("[USUARIO SERVICE - usuarios: {}]", usuario);
-        List<EnderecoModel> listaDeEnderecos = enderecoRepository.findAllByUsuario(usuario);
-        log.info("[USUARIO SERVICE - listaDeEnderecos: {}]", listaDeEnderecos);
+            log.info("[USUARIO SERVICE - usuarios: {}]", usuario);
+            List<EnderecoModel> listaDeEnderecos = enderecoRepository.findAllByUsuario(usuario);
+            log.info("[USUARIO SERVICE - listaDeEnderecos: {}]", listaDeEnderecos);
 
-        return UsuarioResponse
-                .builder()
-                .cpf(usuario.getCpf())
-                .dataNascimento(usuario.getDataNascimento())
-                .email(usuario.getEmail())
-                .nome(usuario.getNome())
-                .endereco(Endereco.converterList(listaDeEnderecos))
-                .build();
+            return UsuarioResponse
+                    .builder()
+                    .cpf(usuario.getCpf())
+                    .dataNascimento(usuario.getDataNascimento())
+                    .email(usuario.getEmail())
+                    .nome(usuario.getNome())
+                    .endereco(Endereco.converterList(listaDeEnderecos))
+                    .build();
     }
 }

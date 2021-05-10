@@ -32,13 +32,10 @@ public class SwaggerConfig {
                 .apiInfo(this.infoApi().build())
                 .consumes(new HashSet<String>(Arrays.asList("application/json")))
                 .produces(new HashSet<String>(Arrays.asList("application/json")));
-
         return docket;
     }
 
-
     private ApiInfoBuilder infoApi() {
-
         ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
 
         apiInfoBuilder.title("SERVICE TO LIST OF USER ADDRESSES");
@@ -47,7 +44,6 @@ public class SwaggerConfig {
         apiInfoBuilder.license("");
         apiInfoBuilder.licenseUrl("");
         apiInfoBuilder.contact(this.contact());
-
         return apiInfoBuilder;
     }
 
